@@ -20,7 +20,7 @@ public class WheelDrive : MonoBehaviour
     [SerializeField] DriveType driveType;
     WheelCollider[] m_Wheels;
     float handBrake, torque;
-    public float angle;
+    public Vector2 angle;
 
     public InputActionAsset inputActions;
     InputActionMap gameplayActionMap;
@@ -53,7 +53,7 @@ public class WheelDrive : MonoBehaviour
     }
     void GetAngleInput(InputAction.CallbackContext context)
     {
-        angle = context.ReadValue<float>() * maxAngle;
+        angle = context.ReadValue<Vector2>() * maxAngle;
     }
     void GetTorqueInput(InputAction.CallbackContext context)
     {
@@ -96,7 +96,7 @@ public class WheelDrive : MonoBehaviour
         {
             if(wheel.transform.localPosition.z > 0)
             {
-                wheel.steerAngle = angle;
+                wheel.steerAngle = angle.y;
             }
             if(wheel.transform.localPosition.z < 0)
             {

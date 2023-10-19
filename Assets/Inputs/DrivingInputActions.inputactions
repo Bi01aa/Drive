@@ -6,18 +6,18 @@
             "id": "b653e2c5-1ca2-41a0-af59-c0f7440bc1f2",
             "actions": [
                 {
-                    "name": "HandBrake",
-                    "type": "Button",
-                    "id": "c9b01664-ee37-4b48-a771-4d9c576765c0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Acceleration",
                     "type": "Value",
                     "id": "ea9c95c4-beff-46c7-adac-eb5c11c1e1c5",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "HandBrake",
+                    "type": "Value",
+                    "id": "c9b01664-ee37-4b48-a771-4d9c576765c0",
                     "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
@@ -55,6 +55,149 @@
                     "action": "HandBrake",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78992ed4-8a05-4fca-8bd2-2df24ceee8cf",
+                    "path": "<Joystick>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandBrake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e81296ee-4c82-4da1-8a1b-42eb23cb2383",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6705d680-3885-496d-98d1-4156313b68ee",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "2fa58dfd-66ea-478b-aba3-ba264a1b2d36",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "04855dc9-9dc8-45d1-840a-b9fee288b536",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "bd01520c-f979-49e1-aef9-2be2c234a592",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "e33d3f65-e786-4acd-bd6b-a50387839f79",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d801f970-0cd7-43f3-ad5e-39b8cb2cb1e4",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "e26707e3-24a4-4e29-bb19-a7e1510f8f17",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "c99aa388-96c9-46d1-beb1-4e4e9ba4fc2e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a67b7b72-612e-4f0b-97cf-9cffacbbc2af",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "69cf96b8-ecf1-467d-b8c8-8e4e17096edf",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "eba03877-4061-4691-828e-5a85c35d844c",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteeringAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -135,89 +278,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e81296ee-4c82-4da1-8a1b-42eb23cb2383",
-                    "path": "<Gamepad>/leftStick/left",
+                    "id": "92730241-b019-4ebe-bfe4-8164dff20ed1",
+                    "path": "<Joystick>/rz",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "a2f4af3c-7aa3-4b89-8c71-03d5813f7432",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "ac6a8726-1c00-4946-9427-15f2af472f37",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "6bcedf35-4344-41e8-ad4a-b2eaee8afefe",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "4e0da92a-326a-4f24-b88c-4267c6911eef",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "a80b14b0-a2da-463e-bd71-36e5923d9167",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "ef3d0044-11e3-4530-bb95-f5673e672812",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "6705d680-3885-496d-98d1-4156313b68ee",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteeringAngle",
+                    "action": "Acceleration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
