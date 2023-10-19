@@ -118,7 +118,7 @@ public class WheelDrive : MonoBehaviour
 
                 Transform shapeTransform = wheel.transform.GetChild(0);
 
-                if (wheel.name == "Wheel1" || wheel.name == "Wheel3" || wheel.name == "a2l")
+                if (wheel.name == "a01" || wheel.name == "a1l" || wheel.name == "a2l")
                 {
                     shapeTransform.rotation = q * Quaternion.Euler(0, 180, 0);
                     shapeTransform.position = p;
