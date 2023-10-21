@@ -11,28 +11,26 @@ public class WheelDriveNew : MonoBehaviour
     private PlayerInput playerInput = null;
     public GameObject playerCar = null;
     private float accelKey;
-    private float steerKey;
+    public GameObject mesh;
+    
     
     [SerializeField] float maxAngle = 30f;
     [SerializeField] float maxTorque = 3000f;
     [SerializeField] float brakeTorque = 30000f;
     [SerializeField] DriveType driveType;
 
-    WheelCollider[] m_Wheels; 
+    WheelCollider wheelCollider = null;
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponentInParent<PlayerInput>();
         playerInput.neverAutoSwitchControlSchemes = true;
         driveType = DriveType.RearWheelDrive;
 
     }
     void Start()
     {
-        m_Wheels = GetComponentsInChildren<WheelCollider>();
-        for (int i = 0; i < m_Wheels.Length; i++)
-        {
-            var wheel = m_Wheels[i];
-        }
+        wheelCollider = GetComponent<WheelCollider>();
+
     }
     private void OnDisable()
     {
@@ -51,51 +49,53 @@ public class WheelDriveNew : MonoBehaviour
 
     private void Steer_Canceled(InputAction.CallbackContext obj)
     {
-        foreach (WheelCollider wheel in m_Wheels)
+        if (wheelCollider.transform.parent.localPosition.z > 0)
         {
-            if (wheel.transform.localPosition.z > 0)
-            {
-                wheel.steerAngle = 0f;
-            }
+            wheelCollider.steerAngle = 0f;
         }
     }
 
     private void Steer_Performed(InputAction.CallbackContext obj)
     {
-        foreach (WheelCollider wheel in m_Wheels)
+      
+        if (wheelCollider.transform.parent.localPosition.z > 0)
         {
-            if (wheel.transform.localPosition.z > 0)
-             {
-                wheel.steerAngle = obj.ReadValue<float>() * maxAngle;
-            }
+            wheelCollider.steerAngle = obj.ReadValue<float>() * maxAngle;
         }
+        
     }
 
 
     private void Acceleration_Canceled(InputAction.CallbackContext obj)
     {
-        foreach (WheelCollider wheel in m_Wheels)
-        {
-            wheel.motorTorque = 0f;
+        
+            wheelCollider.motorTorque = 0f;
 
 
-        }
+        
     }
 
     private void Acceleration_Performed(InputAction.CallbackContext obj)
     {
         accelKey = obj.ReadValue<float>();
-        foreach (WheelCollider wheel in m_Wheels)
-        {
+        
+        
 
-            if (wheel.transform.localPosition.z < 0 && driveType != DriveType.FrontWheelDrive)
+            if (wheelCollider.transform.parent.localPosition.z < 0 && driveType != DriveType.FrontWheelDrive)
             {
-                wheel.motorTorque = accelKey * maxTorque;
+                wheelCollider.motorTorque = accelKey * maxTorque;
             }
-            if (wheel.transform.localPosition.z > 0 && driveType != DriveType.RearWheelDrive)
+            if (wheelCollider.transform.parent.localPosition.z > 0 && driveType != DriveType.RearWheelDrive)
             {
-                wheel.motorTorque = accelKey * maxTorque;
+                wheelCollider.motorTorque = accelKey * maxTorque;
             }
-        }
+        
+    }
+
+    private void UpdateWheel()
+    {
+        MeshRenderer meshR = mesh.GetComponent<MeshRenderer>();
+        meshR.transform.position = wheelCollider.transform.position;
+        meshR.transform.rotation = wheelCollider.transform.rotation;
     }
 }
