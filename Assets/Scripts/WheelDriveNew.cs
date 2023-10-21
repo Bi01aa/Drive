@@ -15,8 +15,8 @@ public class WheelDriveNew : MonoBehaviour
     
     
     [SerializeField] float maxAngle = 30f;
-    [SerializeField] float maxTorque = 3000f;
-    [SerializeField] float brakeTorque = 30000f;
+    [SerializeField] float maxTorque = 1000f;
+    [SerializeField] float brakeTorque = 3000f;
     [SerializeField] DriveType driveType;
 
     WheelCollider wheelCollider = null;
@@ -34,6 +34,7 @@ public class WheelDriveNew : MonoBehaviour
     }
     private void OnDisable()
     {
+        //please unsubscribe all to prevent memory leaks
         playerInput.actions["Acceleration"].performed -= Acceleration_Performed;
         playerInput.actions["Acceleration"].canceled -= Acceleration_Canceled;
         playerInput.actions["SteeringAngle"].performed -= Steer_Performed;
@@ -41,12 +42,14 @@ public class WheelDriveNew : MonoBehaviour
     }
     private void OnEnable()
     {
+        //add new input events here
         playerInput.actions["Acceleration"].performed += Acceleration_Performed;
         playerInput.actions["Acceleration"].canceled += Acceleration_Canceled;
         playerInput.actions["SteeringAngle"].performed += Steer_Performed;
         playerInput.actions["SteeringAngle"].canceled += Steer_Canceled;
     }
 
+    //resets steering angle when released
     private void Steer_Canceled(InputAction.CallbackContext obj)
     {
         if (wheelCollider.transform.parent.localPosition.z > 0)
@@ -55,6 +58,7 @@ public class WheelDriveNew : MonoBehaviour
         }
     }
 
+    //steering angle controller
     private void Steer_Performed(InputAction.CallbackContext obj)
     {
       
@@ -65,7 +69,7 @@ public class WheelDriveNew : MonoBehaviour
         
     }
 
-
+    //resets acceleration when released
     private void Acceleration_Canceled(InputAction.CallbackContext obj)
     {
         
@@ -79,7 +83,7 @@ public class WheelDriveNew : MonoBehaviour
     {
         accelKey = obj.ReadValue<float>();
         
-        
+        // changed the two axis controller to be one axis
 
             if (wheelCollider.transform.parent.localPosition.z < 0 && driveType != DriveType.FrontWheelDrive)
             {
@@ -89,11 +93,14 @@ public class WheelDriveNew : MonoBehaviour
             {
                 wheelCollider.motorTorque = accelKey * maxTorque;
             }
+            // elseif required here for AWD
         
     }
 
     private void UpdateWheel()
     {
+        // moves the mesh to match the wheel collider
+
         Vector3 vect;
         Quaternion quat;
         wheelCollider.GetWorldPose(out vect, out quat);
