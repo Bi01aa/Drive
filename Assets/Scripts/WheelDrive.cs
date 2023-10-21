@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public enum DriveType {  RearWheelDrive, FrontWheelDrive, AllWheelDrive}
+
 public class WheelDrive : MonoBehaviour
 {
 
