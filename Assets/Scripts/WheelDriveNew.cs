@@ -18,7 +18,7 @@ public class WheelDriveNew : MonoBehaviour
     [SerializeField] float brakeTorque = 30000f;
     [SerializeField] DriveType driveType;
 
-    WheelCollider[] m_Wheels; [SerializeField] GameObject wheelShape;
+    WheelCollider[] m_Wheels; 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -32,11 +32,6 @@ public class WheelDriveNew : MonoBehaviour
         for (int i = 0; i < m_Wheels.Length; i++)
         {
             var wheel = m_Wheels[i];
-            if (wheelShape != null)
-            {
-                var ws = Instantiate(wheelShape);
-                ws.transform.parent = wheel.transform;
-            }
         }
     }
     private void OnDisable()
