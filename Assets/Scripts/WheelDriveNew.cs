@@ -94,8 +94,16 @@ public class WheelDriveNew : MonoBehaviour
 
     private void UpdateWheel()
     {
+        Vector3 vect;
+        Quaternion quat;
+        wheelCollider.GetWorldPose(out vect, out quat);
+                            
         MeshRenderer meshR = mesh.GetComponent<MeshRenderer>();
-        meshR.transform.position = wheelCollider.transform.position;
-        meshR.transform.rotation = wheelCollider.transform.rotation;
+        meshR.transform.position = vect;
+        meshR.transform.rotation = quat;
+    }
+    private void FixedUpdate()
+    {
+        UpdateWheel();
     }
 }
