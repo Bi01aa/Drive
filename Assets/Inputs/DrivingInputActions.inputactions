@@ -9,8 +9,8 @@
                     "name": "Acceleration",
                     "type": "Value",
                     "id": "ea9c95c4-beff-46c7-adac-eb5c11c1e1c5",
-                    "expectedControlType": "Analog",
-                    "processors": "",
+                    "expectedControlType": "Axis",
+                    "processors": "Normalize(max=1),AxisDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -29,6 +29,15 @@
                     "id": "a5af9680-f296-4caf-81e2-a2f2c416fc2b",
                     "expectedControlType": "Axis",
                     "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Brake",
+                    "type": "Value",
+                    "id": "dd22cc5e-0db1-45c9-904a-1f097d8dfc66",
+                    "expectedControlType": "Axis",
+                    "processors": "AxisDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -68,70 +77,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Fwd/Back Arrow",
-                    "id": "6fef8b58-7293-4acd-bf36-a290440ceff1",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Acceleration",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "e8f1c643-b519-4ca3-919b-9f10e683bbda",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Acceleration",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "9427445b-4fac-4375-b428-6d393ca0b295",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Acceleration",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Fwd/Back WS",
-                    "id": "c63168dd-9d00-4de6-8a66-ede5052e3564",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Acceleration",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "63d3b4b0-91c1-4854-a434-2e2fe160e4c8",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Acceleration",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "2ea65abb-2b12-4159-8061-337f9b542c3d",
+                    "name": "",
+                    "id": "c592f3c1-9594-4498-bf6e-2aadea4b1079",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Acceleration",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "Key AD",
@@ -231,6 +185,28 @@
                     "action": "SteeringAngle",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ef52122d-0620-4583-87b0-5132a0ee2c42",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd45a8e2-28b7-436a-8b5b-da0e222a0aa6",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

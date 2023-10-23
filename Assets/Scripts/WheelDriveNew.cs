@@ -9,15 +9,17 @@ enum DriveType { RearWheelDrive, FrontWheelDrive, AllWheelDrive }
 public class WheelDriveNew : MonoBehaviour
 {
     private PlayerInput playerInput = null;
-    public GameObject playerCar = null;
+    
     private float accelKey;
+    private float brakeKey = 0;
     public GameObject mesh;
     
     
-    [SerializeField] float maxAngle = 30f;
-    [SerializeField] float maxTorque = 1000f;
-    [SerializeField] float brakeTorque = 3000f;
-    [SerializeField] DriveType driveType;
+    private float maxAngle = 30f;
+    private float maxTorque = 1000f;
+    private float brakeTorque = 1700f;
+    private float brakeBias = 0.6f;
+    private DriveType driveType;
 
     WheelCollider wheelCollider = null;
     private void Awake()
@@ -39,6 +41,8 @@ public class WheelDriveNew : MonoBehaviour
         playerInput.actions["Acceleration"].canceled -= Acceleration_Canceled;
         playerInput.actions["SteeringAngle"].performed -= Steer_Performed;
         playerInput.actions["SteeringAngle"].canceled -= Steer_Canceled;
+        playerInput.actions["Brake"].performed -= Brake_Performed;
+        playerInput.actions["Brake"].canceled -= Brake_Canceled;
     }
     private void OnEnable()
     {
@@ -47,6 +51,53 @@ public class WheelDriveNew : MonoBehaviour
         playerInput.actions["Acceleration"].canceled += Acceleration_Canceled;
         playerInput.actions["SteeringAngle"].performed += Steer_Performed;
         playerInput.actions["SteeringAngle"].canceled += Steer_Canceled;
+        playerInput.actions["Brake"].performed += Brake_Performed;
+        playerInput.actions["Brake"].canceled += Brake_Canceled; 
+    }
+
+    private void brakeUpdate(float brake)
+    {
+        
+        if (wheelCollider.rotationSpeed > 10f)
+        {
+            if (wheelCollider.transform.parent.localPosition.z < 0)
+            {
+                wheelCollider.motorTorque = brake * brakeTorque * (1f - brakeBias);
+            }
+            if (wheelCollider.transform.parent.localPosition.z > 0)
+            {
+                wheelCollider.motorTorque = brake * brakeTorque * brakeBias;
+            }
+        }
+        else if (wheelCollider.rotationSpeed < 10f)
+        {
+            if (wheelCollider.transform.parent.localPosition.z < 0)
+            {
+                wheelCollider.motorTorque = (brake * brakeTorque * (1f - brakeBias)) * -1f;
+            }
+            if (wheelCollider.transform.parent.localPosition.z > 0)
+            {
+                wheelCollider.motorTorque = (brake * brakeTorque * brakeBias) * -1f;
+            }
+        }
+        else
+        {
+            wheelCollider.motorTorque = 0f;
+            wheelCollider.rotationSpeed = 0f;
+        }
+    }
+
+
+    private void Brake_Performed(InputAction.CallbackContext obj)
+    {
+        brakeKey = obj.ReadValue<float>() * -1f;
+    }
+
+    private void Brake_Canceled(InputAction.CallbackContext obj)
+    {
+        brakeKey = 0f;
+        Debug.Log("cancelled");
+        wheelCollider.motorTorque = 0f;
     }
 
     //resets steering angle when released
@@ -112,5 +163,9 @@ public class WheelDriveNew : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateWheel();
+        if (brakeKey < 0f)
+        {
+            brakeUpdate(brakeKey); Debug.Log(brakeKey);
+        }
     }
 }
