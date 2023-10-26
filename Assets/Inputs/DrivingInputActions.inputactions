@@ -264,6 +264,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "WheelPedal",
+            "bindingGroup": "WheelPedal",
+            "devices": []
         }
     ]
 }
