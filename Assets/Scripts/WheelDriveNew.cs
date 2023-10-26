@@ -16,9 +16,11 @@ public class WheelDriveNew : MonoBehaviour
     
     
     private float maxAngle = 30f;
+    private float steerAngle = 30f;
     private float maxTorque = 1000f;
     private float brakeTorque = 1700f;
     private float brakeBias = 0.6f;
+    private Rigidbody body;
     private DriveType driveType;
 
     WheelCollider wheelCollider = null;
@@ -27,6 +29,7 @@ public class WheelDriveNew : MonoBehaviour
         playerInput = GetComponentInParent<PlayerInput>();
         playerInput.neverAutoSwitchControlSchemes = true;
         driveType = DriveType.RearWheelDrive;
+        body = GetComponentInParent<Rigidbody>();
 
     }
     void Start()
@@ -115,9 +118,18 @@ public class WheelDriveNew : MonoBehaviour
       
         if (wheelCollider.transform.parent.localPosition.z > 0)
         {
-            wheelCollider.steerAngle = obj.ReadValue<float>() * maxAngle;
+            if (wheelCollider.rotationSpeed < 2000f)
+            {
+                wheelCollider.steerAngle = obj.ReadValue<float>() * maxAngle;
+                
+            }
+            else
+            {
+                wheelCollider.steerAngle = obj.ReadValue<float>() * maxAngle / (body.velocity.magnitude/10);
+            }
+
         }
-        
+        Debug.Log(wheelCollider.rotationSpeed + " " + wheelCollider.steerAngle);
     }
 
     //resets acceleration when released
@@ -162,6 +174,7 @@ public class WheelDriveNew : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        steerAngle = maxAngle / (wheelCollider.rpm/360);
         UpdateWheel();
         if (brakeKey < 0f)
         {
