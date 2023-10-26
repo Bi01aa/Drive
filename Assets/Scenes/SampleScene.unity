@@ -3170,7 +3170,7 @@ WheelCollider:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.2
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -3181,11 +3181,11 @@ WheelCollider:
     m_AsymptoteValue: 1
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
-    m_AsymptoteSlip: 1.8
-    m_AsymptoteValue: 1.5
-    m_Stiffness: 1.5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2.8
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 2.8
+    m_Stiffness: 2.4
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6276,8 +6276,8 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
-    targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+    targetPosition: 0.35
+  m_SuspensionDistance: 0.2
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -6288,11 +6288,11 @@ WheelCollider:
     m_AsymptoteValue: 1
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
-    m_AsymptoteSlip: 1.8
-    m_AsymptoteValue: 1.5
-    m_Stiffness: 1.5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2.8
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 2.8
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10957,6 +10957,14 @@ PrefabInstance:
     - target: {fileID: 7495443279060062592, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       propertyPath: m_Constraints
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495443279060062592, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495443279060062592, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
+      propertyPath: m_CenterOfMass.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7671413317644158532, guid: 133308cdb8794744caaef026bde9e1f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -117549,8 +117557,8 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
-    targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+    targetPosition: 0.35
+  m_SuspensionDistance: 0.2
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -117561,11 +117569,11 @@ WheelCollider:
     m_AsymptoteValue: 1
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
-    m_AsymptoteSlip: 1.8
-    m_AsymptoteValue: 1.5
-    m_Stiffness: 1.5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2.8
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 2.8
+    m_Stiffness: 2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -119176,7 +119184,7 @@ WheelCollider:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.2
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -119187,11 +119195,11 @@ WheelCollider:
     m_AsymptoteValue: 1
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 1.5
-    m_ExtremumValue: 2
-    m_AsymptoteSlip: 1.8
-    m_AsymptoteValue: 1.5
-    m_Stiffness: 1.5
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 2.8
+    m_AsymptoteSlip: 1
+    m_AsymptoteValue: 2.8
+    m_Stiffness: 2.4
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
