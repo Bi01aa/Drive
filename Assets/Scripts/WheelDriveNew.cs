@@ -18,7 +18,7 @@ public class WheelDriveNew : MonoBehaviour
     private float maxAngle = 30f;
     private float steerAngle = 30f;
     private float maxTorque = 1000f;
-    private float brakeTorque = 1700f;
+    private float brakeTorque = 3000f;
     private float brakeBias = 0.6f;
     private Rigidbody bodyRB;
 
