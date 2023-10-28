@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.PlayerSettings;
+using UnityEditor;
 
 public enum CameraState {ChaseFar, ChaseClose, FirstPerson, Bonnet, Nose}
 
