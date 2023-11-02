@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-
+public enum DriveType { RearWheelDrive, FrontWheelDrive, AllWheelDrive }
 public class WheelDrive : MonoBehaviour
 {
 
     [SerializeField] float maxAngle = 30f;
     [SerializeField] float maxTorque = 300f;
-    [SerializeField] float brakeTorque = 30000f;
+    [SerializeField] float brakeTorque = 1000000f;
+    [SerializeField] GameObject wheelShape;
 
     [SerializeField] float criticalSpeed = 5f;
     [SerializeField] int stepBelow = 5;
@@ -79,6 +80,11 @@ public class WheelDrive : MonoBehaviour
         for (int i = 0; i < m_Wheels.Length; i++)
         {
             var wheel = m_Wheels[i];
+            if (wheelShape != null)
+            {
+                var ws = Instantiate(wheelShape);
+                ws.transform.parent = wheel.transform;
+            }
         }
     }
 
@@ -88,15 +94,15 @@ public class WheelDrive : MonoBehaviour
 
         foreach (WheelCollider wheel in m_Wheels)
         {
-            if(wheel.transform.localPosition.z > 0)
+            if (wheel.transform.localPosition.z > 0)
             {
-                wheel.steerAngle = angle.y;
+                wheel.steerAngle = angle.x;
             }
-            if(wheel.transform.localPosition.z < 0)
+            if (wheel.transform.localPosition.z < 0)
             {
                 wheel.brakeTorque = handBrake;
             }
-            if(wheel.transform.localPosition.z < 0 && driveType != DriveType.FrontWheelDrive)
+            if (wheel.transform.localPosition.z < 0 && driveType != DriveType.FrontWheelDrive)
             {
                 wheel.motorTorque = torque;
             }
@@ -104,8 +110,26 @@ public class WheelDrive : MonoBehaviour
             {
                 wheel.motorTorque = torque;
             }
-            
+            if (wheelShape)
+            {
+                Quaternion q;
+                Vector3 p;
+                wheel.GetWorldPose(out p, out q);
+
+                Transform shapeTransform = wheel.transform.GetChild(0);
+
+                if (wheel.name == "a0l" || wheel.name == "a1l" || wheel.name == "a2l")
+                {
+                    shapeTransform.rotation = q * Quaternion.Euler(0, 180, 0);
+                    shapeTransform.position = p;
+                }
+                else
+                {
+                    shapeTransform.position = p;
+                    shapeTransform.rotation = q;
+                }
             }
+
         }
     }
-
+}

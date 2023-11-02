@@ -9,7 +9,7 @@
                     "name": "Acceleration",
                     "type": "Value",
                     "id": "ea9c95c4-beff-46c7-adac-eb5c11c1e1c5",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Analog",
                     "processors": "Normalize(max=1),AxisDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,17 +27,8 @@
                     "name": "SteeringAngle",
                     "type": "Value",
                     "id": "a5af9680-f296-4caf-81e2-a2f2c416fc2b",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Brake",
-                    "type": "Value",
-                    "id": "dd22cc5e-0db1-45c9-904a-1f097d8dfc66",
-                    "expectedControlType": "Axis",
-                    "processors": "AxisDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -76,6 +67,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ae35fd72-6118-4ba4-8b42-058bf407d0a1",
+                    "path": "<Joystick>/stick/y",
+                    "interactions": "",
+                    "processors": "Normalize(min=-1,max=1,zero=-1)",
+                    "groups": "",
+                    "action": "HandBrake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0d7a71c3-cf87-4304-acac-f55e68c04bd4",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -92,6 +94,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Acceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d35e2d4f-4277-4c44-a702-638fd4c226eb",
+                    "path": "<Joystick>/rz",
+                    "interactions": "",
+                    "processors": "Invert,Normalize(min=-1,max=1,zero=-1)",
+                    "groups": "",
                     "action": "Acceleration",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -197,23 +210,12 @@
                 },
                 {
                     "name": "",
-                    "id": "ef52122d-0620-4583-87b0-5132a0ee2c42",
-                    "path": "<Gamepad>/leftTrigger",
+                    "id": "5dd87864-38a4-4d7a-800b-e2d14df450b8",
+                    "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Brake",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bd45a8e2-28b7-436a-8b5b-da0e222a0aa6",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Brake",
+                    "groups": "",
+                    "action": "SteeringAngle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -235,6 +237,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "CameraSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46e69fe9-3b19-474e-9688-79665599ccf7",
+                    "path": "<HID::44F B684>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "CameraSwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
