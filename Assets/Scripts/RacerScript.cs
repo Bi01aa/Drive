@@ -26,7 +26,7 @@ public class RacerScript : MonoBehaviour
 
             Ltime.text = "Time: " + laptime.ToString("F2");
         }
-        SpeedText.text = (m_Rigidbody.Velocity.Magnitude * 2.23693629f).ToString("0")+ (" MPH");
+        
     }
 
     private void OnTriggerEnter(Collider other)
